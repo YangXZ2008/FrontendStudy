@@ -101,15 +101,18 @@
     </div>
     <script>
         let documentScrollHeight = document.querySelector('html').scrollHeight
-        var progress = document.querySelector(".progress-bar").style.width
-        console.log(progress)
-        console.log(documentScrollHeight)
+        var progress = document.querySelector(".progress-bar").style
+        
+        console.log('progress',progress)
+        
+        
         window.onscroll = function(){  
             let scrollTop = document.querySelector('html').scrollTop
             let totalScroll = documentScrollHeight - document.documentElement.clientHeight
             let percentage = scrollTop / totalScroll * 100 + '%'
             
-            progress = percentage
+            progress.width = percentage
+            
            
             
         }
