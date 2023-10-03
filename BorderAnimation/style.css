@@ -6,8 +6,14 @@ html {
     margin-top: 10%;
     height: 300px;
     width: 300px;
-    background-color: blue;
+    background-color: black;
     position: relative;
+    border-radius: 8px;
+}
+@property --spin-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
 }
 .card::before {
     position: absolute;
@@ -16,6 +22,22 @@ html {
     left: -5%;
     width: 110%;
     height: 110%;
-    background-color: red;
+    background-image: linear-gradient(
+        var(--spin-angle),
+        hsla(339, 100%, 55%, 1) 0%,
+        hsla(197, 100%, 64%, 1) 100%
+    );
     z-index: -1;
+    border-radius: 8px;
+    filter: blur(4px);
+    animation: border 2s linear infinite;
+}
+
+@keyframes border {
+    0% {
+        --spin-angle: 0deg;
+    }
+    100% {
+        --spin-angle: 360deg;
+    }
 }
